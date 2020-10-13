@@ -5,7 +5,11 @@ import { Category } from './interfaces/category.interface';
 export class CategoriesService {
     private readonly categories: Category[] = [];
 
-    getCategories(){
+    findAll(){
         return this.categories;
+    }
+
+    create(category: Category){
+        return this.categories.push(category);
     }
 }
