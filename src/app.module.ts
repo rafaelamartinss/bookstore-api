@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { AppController } from './app.controller';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Connection } from "typeorm";
+import { User } from './users/user.entity';
 
 @Module({
   imports: [
@@ -13,7 +14,16 @@ import { Connection } from "typeorm";
     CategoriesModule, 
     AuthModule, 
     UsersModule,
-    TypeOrmModule.forRoot()
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'full1705',
+      database: 'bookstore',
+      entities: [User],
+      synchronize: true,
+    })
   ],
   controllers: [AppController]
 })
